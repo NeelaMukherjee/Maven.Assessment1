@@ -10,7 +10,33 @@ public class MultiplesDeleter {
      * given an array of integers, named `ints` return an identical array with evens removed
      */
     public Integer[] deleteEvens(Integer[] ints) {
-        return null;
+
+        int len = ints.length;
+
+        int count = 0;
+
+        for (int i = 0; i < len; i++) {
+
+            if (ints[i] % 2 == 0) {
+
+                ints[i] = null;
+                count++;
+            }
+        }
+
+        Integer[] result = new Integer[len - count];
+
+        for (int i = 0, j = 0; i < len; i++) {
+
+            if (!(ints[i] == null)) {
+
+                result[j] = ints[i];
+                j++;
+            }
+
+        }
+
+        return result;
     }
 
     /**
@@ -19,7 +45,32 @@ public class MultiplesDeleter {
      * given an array of integers, named `ints` return an identical array with odds removed
      */
     public Integer[] deleteOdds(Integer[] ints) {
-        return null;
+        int len = ints.length;
+
+        int count = 0;
+
+        for (int i = 0; i < len; i++) {
+
+            if (ints[i] % 2 != 0) {
+
+                ints[i] = null;
+                count++;
+            }
+        }
+
+        Integer[] result = new Integer[len - count];
+
+        for (int i = 0, j = 0; i < len; i++) {
+
+            if (!(ints[i] == null)) {
+
+                result[j] = ints[i];
+                j++;
+            }
+
+        }
+
+        return result;
     }
 
     /**
@@ -28,16 +79,42 @@ public class MultiplesDeleter {
      * given an array of integers, named `ints` return an identical array with numbers indivisible by 3 removed
      */
     public Integer[] deleteMultiplesOf3(Integer[] ints) {
-        return null;
+
+        return deleteMultiplesOfN(ints, 3);
     }
 
     /**
-     * @param ints array of Integer objects
+     * @param ints     array of Integer objects
      * @param multiple the multiple to evaluate divisibility against
      * @return all ints which are not divisible by the `multiple` specified
      * given an array of integers, named `ints` return an identical array with numbers indivisible by `multiple` removed
      */
     public Integer[] deleteMultiplesOfN(Integer[] ints, int multiple) {
-        return null;
+        int len = ints.length;
+
+        int count = 0;
+
+        for (int i = 0; i < len; i++) {
+
+            if (ints[i] % multiple == 0) {
+
+                ints[i] = null;
+                count++;
+            }
+        }
+
+        Integer[] result = new Integer[len - count];
+
+        for (int i = 0, j = 0; i < len; i++) {
+
+            if (!(ints[i] == null)) {
+
+                result[j] = ints[i];
+                j++;
+            }
+
+        }
+
+        return result;
     }
 }
