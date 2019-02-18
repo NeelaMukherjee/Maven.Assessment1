@@ -39,31 +39,40 @@ public class ArrayUtils {
 
 
         int len = objectArray.length;
+
+        //String [] new_string
+
+        Integer[] intarr = new Integer[len];
+
         int count = 0;
 
         for (int i = 0; i < len; i++) {
 
-            if (objectArray[i].equals(objectToRemove)) {
-                objectArray[i] = "";
+            intarr[i] = (Integer) objectArray[i];
+        }
+
+        for (int i = 0; i < len; i++) {
+
+            if (intarr[i].equals(objectToRemove)) {
+                intarr[i] = 0;
                 count++;
                 break;
 
             }
         }
 
-        Object[] new_string = new Object[(len - count)];
+        Integer[] new_string = new Integer[(len - count)];
 
-        for (int i = 0, j = 0; i < len; i++) {
+        for (int i = 0,j=0; i < len; i++) {
 
-            if (!(objectArray[i].equals(""))) {
+            if (!(intarr[i].equals(0))) {
+                //int j = 0;
 
-
-                new_string[j] = objectArray[i];
+                new_string[j] = intarr[i];
 
                 j++;
 
             }
-
 
         }
 
@@ -140,11 +149,11 @@ public class ArrayUtils {
             }
         }
 
-        if(curr_count < count){
+        if (curr_count < count) {
             count = curr_count;
-            res = objectArray1[numOfelements -1];
+            res = objectArray1[numOfelements - 1];
 
-    }
+        }
 
 
         return res;
@@ -158,15 +167,26 @@ public class ArrayUtils {
      */
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
 
-        List list = new ArrayList(Arrays.asList(objectArray));
 
-        list.addAll(Arrays.asList(objectArrayToAdd));
+        int alen = objectArray.length;
 
-        Object[] mergedList = list.toArray();
+        int blen = objectArrayToAdd.length;
 
-        //Object [] merge = (Object []) Stream.concat(Arrays.stream(objectArray), Arrays.stream(objectArrayToAdd));
+        Integer[] intarr = new Integer[alen + blen];
+
+        for (int i = 0; i < alen; i++) {
+
+            intarr[i] = (Integer) objectArray[i];
+        }
+
+        for (int i = alen, j = 0; i < alen + blen; i++) {
+
+            intarr[i] = (Integer) objectArrayToAdd[j];
+
+            j++;
+        }
 
 
-        return mergedList;
+        return intarr;
     }
 }
