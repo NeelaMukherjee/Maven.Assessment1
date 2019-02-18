@@ -16,7 +16,7 @@ public class BasicStringUtils {
 
         Character ch = Character.toUpperCase(str.charAt(0));
 
-        String camel_string = str.replace(str.charAt(0),ch);
+        String camel_string = str.replace(str.charAt(0), ch);
 
 
         return camel_string;
@@ -48,7 +48,7 @@ public class BasicStringUtils {
     public static String reverseThenCamelCase(String str) {
 
 
-        String rev = reverse (str);
+        String rev = reverse(str);
 
         String result = camelCase(rev);
         return result;
@@ -65,7 +65,7 @@ public class BasicStringUtils {
 
         StringBuilder stringBuilder = new StringBuilder(str);
 
-        stringBuilder.deleteCharAt(len-1);
+        stringBuilder.deleteCharAt(len - 1);
         stringBuilder.deleteCharAt(0);
 
         String new_string = stringBuilder.toString();
@@ -78,6 +78,23 @@ public class BasicStringUtils {
      * @return string with identical characters, each with opposite casing
      */
     public static String invertCasing(String str) {
-        return null;
+
+
+        int len = str.length();
+
+        char[] inv_cast = str.toCharArray();
+
+        for (int i = 0; i < len; i++) {
+
+            if (Character.isUpperCase(str.charAt(i))) {
+
+                inv_cast[i] = Character.toLowerCase(str.charAt(i));
+            } else {
+
+                inv_cast[i] = Character.toUpperCase(str.charAt(i));
+
+            }
+        }
+        return String.valueOf(inv_cast);
     }
 }

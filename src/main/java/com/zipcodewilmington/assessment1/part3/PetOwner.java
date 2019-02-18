@@ -1,26 +1,51 @@
 package com.zipcodewilmington.assessment1.part3;
 
+import java.util.ArrayList;
+
 /**
  * Created by leon on 2/16/18.
  */
 public class PetOwner {
+
+    String ownerName;
+
+    //<Pet extends Pet>{
     /**
      * @param name name of the owner of the Pet
      * @param pets array of Pet object
      */
+    ArrayList<Pet> list = new ArrayList<>();
+
     public PetOwner(String name, Pet... pets) {
+
+setOwner(name);
+        //Pet [] pets;
+    }
+
+    private void setOwner(String name) {
+
+        ownerName = name;
+    }
+
+    public String getOwner(){
+
+        return ownerName;
     }
 
     /**
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
+
+        list.add(pet);
     }
 
     /**
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
+
+        list.remove(pet);
 
     }
 
@@ -36,10 +61,9 @@ public class PetOwner {
      * @return the age of the Pet object whose age field is the lowest amongst all Pets in this class
      */
     public Integer getYoungetPetAge() {
+
         return null;
     }
-
-
 
 
     /**
@@ -68,13 +92,16 @@ public class PetOwner {
      * @return the name property of the Pet
      */
     public String getName() {
-        return null;
+
+        return getName();
     }
 
     /**
      * @return array representation of animals owned by this PetOwner
      */
     public Pet[] getPets() {
+
+
         return null;
     }
 }
