@@ -38,42 +38,34 @@ public class ArrayUtils {
     public static Object[] removeValue(Object[] objectArray, Object objectToRemove) {
 
 
+        int count = getNumberOfOccurrences(objectArray, objectToRemove);
         int len = objectArray.length;
 
-        //String [] new_string
+//
+//        for (int i = 0; i < len; i++) {
+//
+//            intarr[i] = (Integer) objectArray[i];
+//        }
+//
+//        for (int i = 0; i < len; i++) {
+//
+//            if (intarr[i].equals(objectToRemove)) {
+//                intarr[i] = null;
+//                count++;
+//                //break;
+//
+//            }
+//        }
+//
+       Integer[] new_string = new Integer[(len - count)];
 
-        Integer[] intarr = new Integer[len];
+       for (int i = 0, j = 0; i < len; i++) {
 
-        int count = 0;
+            if (!(objectArray[i].equals(objectToRemove))) {
 
-        for (int i = 0; i < len; i++) {
-
-            intarr[i] = (Integer) objectArray[i];
-        }
-
-        for (int i = 0; i < len; i++) {
-
-            if (intarr[i].equals(objectToRemove)) {
-                intarr[i] = 0;
-                count++;
-                break;
-
-            }
-        }
-
-        Integer[] new_string = new Integer[(len - count)];
-
-        for (int i = 0,j=0; i < len; i++) {
-
-            if (!(intarr[i].equals(0))) {
-                //int j = 0;
-
-                new_string[j] = intarr[i];
-
+                new_string [j] = (Integer) objectArray [i];
                 j++;
-
             }
-
         }
 
 

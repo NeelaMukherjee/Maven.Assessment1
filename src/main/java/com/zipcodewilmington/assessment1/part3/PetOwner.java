@@ -7,37 +7,54 @@ import java.util.ArrayList;
  */
 public class PetOwner {
 
-    String ownerName;
+    String name = "Neela";
+
+    //Pet [] pet = new Pet[];
+
 
     //<Pet extends Pet>{
     /**
      * @param name name of the owner of the Pet
      * @param pets array of Pet object
      */
-    ArrayList<Pet> list = new ArrayList<>();
+    ArrayList<Pet> list = new ArrayList<Pet>();
 
     public PetOwner(String name, Pet... pets) {
 
-setOwner(name);
-        //Pet [] pets;
+
+        this.name = name;
+
+        if (pets != null) {
+            for (Pet pet : pets) {
+                this.list.add(pet);
+                pet.setOwner(this);
+            }
+        }
+
     }
 
-    private void setOwner(String name) {
-
-        ownerName = name;
-    }
-
-    public String getOwner(){
-
-        return ownerName;
-    }
+//    private void setOwnerName(String name) {
+//
+//        ownerName = name;
+//    }
+//
+//    public String getOwnerName(){
+//
+//        return ownerName;
+//    }
 
     /**
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
 
-        list.add(pet);
+        if (pet != null) {
+
+            list.add(pet);
+            pet.setOwner(this);
+
+        }
+
     }
 
     /**
@@ -45,7 +62,11 @@ setOwner(name);
      */
     public void removePet(Pet pet) {
 
+        //int index = list.indexOf(pet);
+
         list.remove(pet);
+
+        pet.setOwner(null);
 
     }
 
@@ -54,7 +75,10 @@ setOwner(name);
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
-        return null;
+
+        return list.contains(pet);
+
+//
     }
 
     /**
@@ -62,7 +86,18 @@ setOwner(name);
      */
     public Integer getYoungetPetAge() {
 
-        return null;
+        int petAge = Integer.MAX_VALUE;
+
+        for (Pet pet : list) {
+            if (pet.getAge() < petAge) {
+
+                petAge = pet.getAge();
+            }
+
+        }
+
+
+        return petAge;
     }
 
 
@@ -70,7 +105,17 @@ setOwner(name);
      * @return the age of the Pet object whose age field is the highest amongst all Pets in this class
      */
     public Integer getOldestPetAge() {
-        return null;
+
+        int petAge = Integer.MIN_VALUE;
+
+        for (Pet pet : list) {
+            if (pet.getAge() > petAge) {
+
+                petAge = pet.getAge();
+            }
+
+        }
+        return petAge;
     }
 
 
@@ -78,14 +123,26 @@ setOwner(name);
      * @return the sum of ages of Pet objects stored in this class divided by the number of Pet object
      */
     public Float getAveragePetAge() {
-        return null;
+        Float petAgeAvg;
+
+        float petAge = 0;
+
+        for (Pet pet : list) {
+
+            petAge += pet.getAge();
+        }
+
+        petAgeAvg = petAge / list.size();
+
+
+        return petAgeAvg;
     }
 
     /**
      * @return the number of Pet objects stored in this class
      */
     public Integer getNumberOfPets() {
-        return null;
+        return list.size();
     }
 
     /**
@@ -93,7 +150,8 @@ setOwner(name);
      */
     public String getName() {
 
-        return getName();
+        return name;
+
     }
 
     /**
@@ -102,6 +160,15 @@ setOwner(name);
     public Pet[] getPets() {
 
 
-        return null;
+        Pet[] result = list.toArray(new Pet[list.size()]);
+
+        if (result.length == 0) {
+
+            result = new Pet[1];
+
+        }
+        return result;
+
+
     }
 }

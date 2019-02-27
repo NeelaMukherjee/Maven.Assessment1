@@ -22,7 +22,7 @@ super (name, age);
      */
     public Dog(Integer age) {
 
-        super (age);
+        super ( "Dog name", age);
         //this.age =age;
         //this.name = "Name of Dog";
     }
@@ -32,7 +32,7 @@ super (name, age);
      */
     public Dog(String name) {
 
-        super(name);
+        super(name, 0);
         //this.name = name;
         //this.age = ;
 
